@@ -1,4 +1,5 @@
 const TabBar = require('../screenObjects/components/TabBar');
+const LoginScreen = require('../screenObjects/LoginScreen');
 
 describe('WebdriverIO and Appium, when using navigation through the tab bar', () => {
 
@@ -7,37 +8,37 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
     });
 
     it('should be able to open the webview', async () => {
-        TabBar.openWebView();
+        await TabBar.openWebView();
         await browser.pause(1000)
         // WebViewScreen.waitForWebsiteLoaded();
     });
 
     it('should be able to open the login form screen', async () => {
-        TabBar.openLogin();
+        await TabBar.openLogin();
         await browser.pause(1000)
-        // LoginScreen.waitForIsShown(true);
+        await LoginScreen.waitForIsShown()
     });
 
     it('should be able to open the forms screen', async () => {
-        TabBar.openForms();
+        await TabBar.openForms();
         await browser.pause(1000)
         // FormsScreen.waitForIsShown(true);
     });
 
     it('should be able to open the swipe screen', async () => {
-        TabBar.openSwipe();
+        await TabBar.openSwipe();
         await browser.pause(1000)
         // SwipeScreen.waitForIsShown(true);
     });
 
     it('should be able to open the drag and drop screen', async () => {
-        TabBar.openDrag();
+        await TabBar.openDrag();
         await browser.pause(1000)
         // DragScreen.waitForIsShown(true);
     });
 
     it('should be able to open the home screen', async () => {
-        TabBar.openHome();
+        await TabBar.openHome();
         await browser.pause(1000)
         // HomeScreen.waitForIsShown(true);
     });

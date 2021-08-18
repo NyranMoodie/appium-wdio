@@ -4,10 +4,10 @@ const LoginScreen = require('../screenObjects/LoginScreen');
 
 describe('WebdriverIO and Appium, when interacting with a login form,', () => {
 
-    beforeEach(() => {
-        TabBar.waitForTabBarShown();
-        TabBar.openLogin();
-        LoginScreen.waitForIsShown()
+    beforeEach(async () => {
+        await TabBar.waitForTabBarShown();
+        await TabBar.openLogin();
+        await LoginScreen.waitForIsShown()
     });
 
     it('should be able login successfully', async () => {
