@@ -115,12 +115,15 @@ class Gestures {
     /**
     * Swipe from coordinates (from) to the new coordinates (to). The given coordinates are in pixels.
     */
-    async swipe(from, to) {
+    async swipe(startPoint, endPoint, anchor) {
         await driver.touchPerform([
             // Press the 'finger' on the first location
             {
                 action: 'press',
-                options: from,
+                options: {
+                    x: startPoint,
+                    y: anchor,
+                },
             },
             // This will be the swipe time
             {
@@ -130,7 +133,10 @@ class Gestures {
             // Move the finger to the second position where we want to release it
             {
                 action: 'moveTo',
-                options: to,
+                options: {
+                    x: endPoint,
+                    y: anchor,
+                },
             },
             // Release it
             {
@@ -138,7 +144,7 @@ class Gestures {
             },
         ]);
         // Add a pause, just to make sure the swipe is done
-        await driver.pause(1000);
+        driver.pause(1000);
     }
 
     /**

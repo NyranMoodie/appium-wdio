@@ -10,7 +10,6 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
     it('should be able to open the webview', async () => {
         await TabBar.openWebView();
         await browser.pause(1000)
-        // WebViewScreen.waitForWebsiteLoaded();
     });
 
     it('should be able to open the login form screen', async () => {
