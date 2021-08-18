@@ -2,7 +2,7 @@ const NativeAlert = require('../screenObjects/components/NativeAlert');
 const TabBar = require('../screenObjects/components/TabBar');
 const LoginScreen = require('../screenObjects/LoginScreen');
 
-describe('WebdriverIO and Appium, when using navigation through the tab bar', () => {
+describe('WebdriverIO and Appium, when interacting with a login form,', () => {
 
     beforeEach(() => {
         TabBar.waitForTabBarShown();
@@ -10,7 +10,7 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
         LoginScreen.waitForIsShown()
     });
 
-    it('should be able to open the webview', async () => {
+    it('should be able login successfully', async () => {
         // Always make sure you are on the right tab
         await LoginScreen.loginContainerButton.click();
         // Submit the data
@@ -25,6 +25,19 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
         await NativeAlert.waitForIsShown(false);
     });
 
+    it('should be able sign up successfully', async () => {
+        // Always make sure you are on the right tab
+        await LoginScreen.signUpContainerButton.click();
+        // Submit the data
+        await LoginScreen.submitSignUpForm('test@webdriver.io', 'Test1234!');
+
+        // Wait for the alert and validate it
+        await NativeAlert.waitForIsShown();
+        expect(await NativeAlert.text()).toEqual('Signed Up!\nYou successfully signed up!');
+        // Close the alert
+        await NativeAlert.pressButton('OK');
+        await NativeAlert.waitForIsShown(false);
+    });
 
 });
 
