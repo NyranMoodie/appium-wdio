@@ -10,7 +10,7 @@ describe('WebdriverIO and Appium, when using swiping', () => {
         await SwipeScreen.waitForIsShown(true);
     });
 
-    it.skip('should be able to swipe horizontal by swiping the carousel from left to right', async () => {
+    it('should be able to swipe horizontal by swiping the carousel from left to right', async () => {
         /**
          * To understand what happens in `getNthCardText()` please check the method
          */
@@ -52,12 +52,11 @@ describe('WebdriverIO and Appium, when using swiping', () => {
         expect(await Carousel.getNthCardText('first')).toContain('FULLY OPEN SOURCE');
     });
 
-    it.only('should be able to swipe vertical by finding the surprise', async () => {
+    it('should be able to swipe vertical by finding the surprise', async () => {
         // Swipe up and try to find the element. You can only swipe a max of 5 times
         await SwipeScreen.swipeUp()
         await SwipeScreen.swipeUp()
         await SwipeScreen.swipeUp()
-        await browser.pause(5000)
         expect(await SwipeScreen.logo).toBeDisplayed();
     });
 });
