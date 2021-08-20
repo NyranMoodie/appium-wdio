@@ -1,4 +1,10 @@
-class LoginScreen {
+import AppSettings from "./AppSettings";
+
+class LoginScreen extends AppSettings {
+
+    constructor() {
+        super('~Login-screen');
+    }
 
     get loginContainerButton() { return $('~button-login-container'); }
     get signUpContainerButton() { return $('~button-sign-up-container'); }
@@ -59,8 +65,6 @@ class LoginScreen {
     async clickLoginContainerButton() {
         await this.loginContainerButton.click()
     }
-    async waitForIsShown() {
-        await $('~Login-screen').waitForDisplayed({ timeout: 10000 })
-    }
+
 }
 export default new LoginScreen();

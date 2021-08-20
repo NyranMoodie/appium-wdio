@@ -1,10 +1,13 @@
-class SwipeScreen {
+import AppSettings from './AppSettings';
+
+class SwipeScreen extends AppSettings {
+
+    constructor() {
+        super('~Swipe-screen');
+    }
 
     get logo() { return $('~WebdriverIO logo'); }
 
-    async waitForIsShown() {
-        await $('~Swipe-screen').waitForDisplayed({ timeout: 10000 })
-    }
 }
 
 export default new SwipeScreen()

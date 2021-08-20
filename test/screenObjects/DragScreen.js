@@ -1,5 +1,10 @@
-class DragScreen {
+import AppSettings from './AppSettings';
 
+class DragScreen extends AppSettings {
+
+    constructor() {
+        super('~Drag-drop-screen');
+    }
     get dragL1() { return $('~drag-l1'); }
     get dragC1() { return $('~drag-c1'); }
     get dragR1() { return $('~drag-r1'); }
@@ -83,10 +88,6 @@ class DragScreen {
 
         // Add a pause, just to make sure the drag and drop is done
         await driver.pause(1000);
-    }
-
-    async waitForIsShown() {
-        await $('~Drag-drop-screen').waitForDisplayed({ timeout: 10000 })
     }
 }
 

@@ -1,5 +1,9 @@
 import TabBar from '../screenObjects/components/TabBar';
+import DragScreen from '../screenObjects/DragScreen';
+import FormsScreen from '../screenObjects/FormsScreen';
+import HomeScreen from '../screenObjects/HomeScreen';
 import LoginScreen from '../screenObjects/LoginScreen';
+import SwipeScreen from '../screenObjects/SwipeScreen';
 
 describe('WebdriverIO and Appium, when using navigation through the tab bar', () => {
 
@@ -14,32 +18,27 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
 
     it('should be able to open the login form screen', async () => {
         await TabBar.openLogin();
-        await browser.pause(1000)
         await LoginScreen.waitForIsShown()
     });
 
     it('should be able to open the forms screen', async () => {
         await TabBar.openForms();
-        await browser.pause(1000)
-        // FormsScreen.waitForIsShown(true);
+        await FormsScreen.waitForIsShown(true);
     });
 
     it('should be able to open the swipe screen', async () => {
         await TabBar.openSwipe();
-        await browser.pause(1000)
-        // SwipeScreen.waitForIsShown(true);
+        await SwipeScreen.waitForIsShown(true);
     });
 
     it('should be able to open the drag and drop screen', async () => {
         await TabBar.openDrag();
-        await browser.pause(1000)
-        // DragScreen.waitForIsShown(true);
+        await DragScreen.waitForIsShown(true);
     });
 
     it('should be able to open the home screen', async () => {
         await TabBar.openHome();
-        await browser.pause(1000)
-        // HomeScreen.waitForIsShown(true);
+        await HomeScreen.waitForIsShown(true);
     });
 });
 

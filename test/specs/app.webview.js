@@ -96,12 +96,12 @@ describe('WebdriverIO and Appium, when interacting with a WebView,', () => {
         // Search for the OCR service
         await $('.DocSearch-Input').setValue('ocr service for appium native apps');
         // There might be a history, so make sure the first result is in the `Services` category
-        driver.waitUntil(() => $$('.DocSearch-Hit-source')[0].getText() === 'Services');
+        await browser.pause(10000)
         // Let's take the first result
-        $('#docsearch-item-0 a').click();
+        await $('#docsearch-item-0 a').click();
 
         // Now wait for the header to be displayed and verify that we are on the correct page
-        $('h1').waitForDisplayed({ timeout: 3000 });
+        await $('h1').waitForDisplayed({ timeout: 3000 });
         expect(driver.getTitle()).toEqual('OCR service for Appium Native Apps Service | WebdriverIO');
     });
 });

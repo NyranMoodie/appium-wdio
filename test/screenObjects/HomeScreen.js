@@ -1,8 +1,11 @@
-class HomeScreen {
 
-    async waitForIsShown() {
-        await $('~Home-screen').waitForDisplayed({ timeout: 10000 })
+import AppSettings from "./AppSettings";
+
+class HomeScreen extends AppSettings {
+    constructor() {
+        super('~Home-screen');
     }
+
 }
 
 export default new HomeScreen()

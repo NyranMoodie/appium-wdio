@@ -1,4 +1,9 @@
-class FormsScreen {
+import AppSettings from "./AppSettings";
+
+class FormsScreen extends AppSettings {
+    constructor() {
+        super('~Forms-screen');
+    }
 
 
     get input() { return $('~text-input'); }
@@ -44,10 +49,6 @@ class FormsScreen {
         }
 
         return await $(selector).getText();
-    }
-
-    async waitForIsShown() {
-        await $('~Forms-screen').waitForDisplayed({ timeout: 10000 })
     }
 }
 
