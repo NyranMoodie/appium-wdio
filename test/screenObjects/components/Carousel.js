@@ -53,23 +53,25 @@ class Carousel {
          * Android DOES NOT have the text of the child elements on the parent, we need to get them ourselves.
          */
         let cardText;
-
+        let finalText = '';
         if (driver.isAndroid) {
-            let cardText = await cards[cardNumber]
+            cardText = await cards[cardNumber]
                 // Get all child text views, this will return an array
                 .$$('*//android.widget.TextView')
 
             // walk over every child element, get the text and add it to the string
-            cardText.reduce((currentValue, el) => `${currentValue} ${el.getText()}`, '');
+            cardText.forEach(async (item, index) => {
+                finalText = finalText + await item.getText()
+            })
+
         } else {
             cardText = await cards[cardNumber].getText()
             cardText.trim();
 
         }
+        console.log(finalText)
+        return 'cardText'
 
-        return cardText
-            // Replace all possible breaks, tabs and so on with a single space
-            .replace(/(?:\r\n|\r|\n)/g, ' ');
     }
 
     /**

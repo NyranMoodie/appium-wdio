@@ -21,7 +21,7 @@ exports.config = {
         'appium:deviceName': 'emulator-5554',
         'appium:platformVersion': '11',
         'appium:orientation': 'PORTRAIT',
-        'appium:app': '/Users/nyranmoodie/Desktop/appium-wdio/Android-NativeDemoApp-0.4.0.apk',
+        'appium:app': join(process.cwd(), './apps/Android-NativeDemoApp-0.4.0.apk'),
         'appium:automationName': 'UiAutomator2',
         'appium:noReset': true,
         'appium:newCommandTimeout': 240,
@@ -35,7 +35,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:

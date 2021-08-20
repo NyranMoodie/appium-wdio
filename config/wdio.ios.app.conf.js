@@ -23,7 +23,7 @@ exports.config = {
         'appium:orientation': 'PORTRAIT',
         'appium:automationName': 'XCUITest',
         // The path to the app
-        'appium:app': join(process.cwd(), './iOS-Simulator-NativeDemoApp-0.4.0.app.zip'),
+        'appium:app': join(process.cwd(), './apps/iOS-Simulator-NativeDemoApp-0.4.0.app.zip'),
         // Read the reset strategies very well, they differ per platform, see
         // http://appium.io/docs/en/writing-running-appium/other/reset-strategies/
         'appium:noReset': true,
@@ -36,7 +36,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
