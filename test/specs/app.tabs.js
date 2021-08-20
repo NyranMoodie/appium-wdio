@@ -1,5 +1,5 @@
-const TabBar = require('../screenObjects/components/TabBar');
-const LoginScreen = require('../screenObjects/LoginScreen');
+import TabBar from '../screenObjects/components/TabBar';
+import LoginScreen from '../screenObjects/LoginScreen';
 
 describe('WebdriverIO and Appium, when using navigation through the tab bar', () => {
 

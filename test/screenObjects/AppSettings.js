@@ -2,4 +2,4 @@ class AppSettings {
 
 }
 
-module.exports = new AppSettings()
+export default new AppSettings()

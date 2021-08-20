@@ -1,4 +1,4 @@
-const Page = require('./page')
+import Page from './page';
 
 class DynamicPage extends Page {
     /**
@@ -15,4 +15,4 @@ class DynamicPage extends Page {
     }
 }
 
-module.exports = new DynamicPage()
+export default new DynamicPage()

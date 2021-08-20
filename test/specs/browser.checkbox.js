@@ -1,4 +1,4 @@
-const CheckboxPage = require('../pageobjects/checkbox.page');
+import CheckboxPage from '../pageobjects/checkbox.page';
 
 describe('checkboxes', () => {
     it('checkbox 2 should be enabled', async () => {

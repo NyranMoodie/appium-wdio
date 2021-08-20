@@ -1,4 +1,4 @@
-const DynamicPage = require('../pageobjects/dynamic.page');
+import DynamicPage from '../pageobjects/dynamic.page';
 
 describe('dynamic loading', () => {
     it('should be an button on the page', async () => {

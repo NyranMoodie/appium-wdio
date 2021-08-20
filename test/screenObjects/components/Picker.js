@@ -52,4 +52,4 @@ class Picker {
         await $(SELECTORS.DONE).click();
     }
 }
-module.exports = new Picker();
+export default new Picker();

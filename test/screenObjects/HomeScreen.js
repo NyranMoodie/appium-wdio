@@ -5,4 +5,4 @@ class HomeScreen {
     }
 }
 
-module.exports = new HomeScreen()
+export default new HomeScreen()

@@ -59,4 +59,4 @@ class NativeAlert {
         return `${$(SELECTORS.ANDROID.ALERT_TITLE).getText()}\n${$(SELECTORS.ANDROID.ALERT_MESSAGE).getText()}`;
     }
 }
-module.exports = new NativeAlert();
+export default new NativeAlert();

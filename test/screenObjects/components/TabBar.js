@@ -34,4 +34,4 @@ class TabBar {
         await this.home.waitForDisplayed({ timeout: 3000 });
     }
 }
-module.exports = new TabBar();
+export default new TabBar();

@@ -9,4 +9,4 @@ class WebViewScreen {
     }
 }
 
-module.exports = new WebViewScreen()
+export default new WebViewScreen()

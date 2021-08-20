@@ -1,4 +1,4 @@
-const Page = require('./page')
+import Page from './page';
 
 class FormPage extends Page {
     /**
@@ -28,4 +28,4 @@ class FormPage extends Page {
     }
 }
 
-module.exports = new FormPage()
+export default new FormPage()

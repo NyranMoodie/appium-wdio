@@ -1,4 +1,4 @@
-const FormPage = require('../pageobjects/form.page');
+import FormPage from '../pageobjects/form.page';
 
 describe('auth form', () => {
 

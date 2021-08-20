@@ -1,5 +1,5 @@
-const TabBar = require("../screenObjects/components/TabBar");
-const DragScreen = require("../screenObjects/DragScreen");
+import TabBar from "../screenObjects/components/TabBar";
+import DragScreen from "../screenObjects/DragScreen";
 
 ;
 

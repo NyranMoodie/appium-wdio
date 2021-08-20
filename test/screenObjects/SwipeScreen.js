@@ -127,4 +127,4 @@ class SwipeScreen {
     }
 }
 
-module.exports = new SwipeScreen()
+export default SwipeScreen()

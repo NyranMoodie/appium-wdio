@@ -1,4 +1,4 @@
-const Page = require('./page');
+import Page from './page';
 
 class CheckboxPage extends Page {
     /**
@@ -15,4 +15,4 @@ class CheckboxPage extends Page {
     }
 }
 
-module.exports = new CheckboxPage();
+export default new CheckboxPage();

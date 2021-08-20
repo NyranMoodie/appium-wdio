@@ -1,8 +1,8 @@
-const Gestures = require('../helpers/Gestures');
-const TabBar = require('../screenobjects/components/TabBar');
-const FormScreen = require('../screenobjects/FormsScreen');
-const Picker = require('../screenobjects/components/Picker');
-const NativeAlert = require('../screenobjects/components/NativeAlert');
+import Gestures from '../helpers/Gestures';
+import TabBar from '../screenobjects/components/TabBar';
+import FormScreen from '../screenobjects/FormsScreen';
+import Picker from '../screenobjects/components/Picker';
+import NativeAlert from '../screenobjects/components/NativeAlert';
 
 describe('WebdriverIO and Appium, when interacting with form elements,', () => {
     beforeEach(async () => {

@@ -90,4 +90,4 @@ class DragScreen {
     }
 }
 
-module.exports = new DragScreen()
+export default new DragScreen()

@@ -63,4 +63,4 @@ class LoginScreen {
         await $('~Login-screen').waitForDisplayed({ timeout: 10000 })
     }
 }
-module.exports = new LoginScreen();
+export default new LoginScreen();

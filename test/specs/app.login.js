@@ -1,6 +1,6 @@
-const NativeAlert = require('../screenObjects/components/NativeAlert');
-const TabBar = require('../screenObjects/components/TabBar');
-const LoginScreen = require('../screenObjects/LoginScreen');
+import NativeAlert from '../screenObjects/components/NativeAlert';
+import TabBar from '../screenObjects/components/TabBar';
+import LoginScreen from '../screenObjects/LoginScreen';
 
 describe('WebdriverIO and Appium, when interacting with a login form,', () => {
 

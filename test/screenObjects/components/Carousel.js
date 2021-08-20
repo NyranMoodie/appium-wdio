@@ -129,4 +129,4 @@ class Carousel {
     }
 }
 
-module.exports = new Carousel();
+export default new Carousel();
