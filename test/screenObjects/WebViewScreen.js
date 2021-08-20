@@ -1,4 +1,6 @@
-class WebViewScreen {
+import WebView from "../helpers/WebView";
+
+class WebViewScreen extends WebView {
 
     async waitForWebViewIsDisplayedByXpath(isShown = true) {
         const selector = browser.isAndroid ? '*//android.webkit.WebView' : '*//XCUIElementTypeWebView';

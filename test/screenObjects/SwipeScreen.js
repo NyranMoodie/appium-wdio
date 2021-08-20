@@ -127,4 +127,4 @@ class SwipeScreen {
     }
 }
 
-export default SwipeScreen()
+export default new SwipeScreen()
