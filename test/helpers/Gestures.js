@@ -1,5 +1,4 @@
-
-const RectReturn = require('@wdio/protocols/build/types')
+import { RectReturn } from '@wdio/protocols/build/types';
 
 /**
  * To make a Gesture methods more robust for multiple devices and also
@@ -9,7 +8,7 @@ const RectReturn = require('@wdio/protocols/build/types')
  * multiple times.
  */
 
-let SCREEN_SIZE
+let SCREEN_SIZE;
 
 /**
  * The values in the below object are percentages of the screen
@@ -32,29 +31,29 @@ const SWIPE_DIRECTION = {
         end: { x: 50, y: 15 },
     },
 };
+
 class Gestures {
     /**
      * Check if an element is visible and if not wipe up a portion of the screen to
      * check if it visible after x amount of scrolls
      */
-
     async checkIfDisplayedWithSwipeUp(element, maxScrolls, amount = 0) {
         // If the element is not displayed and we haven't scrolled the max amount of scrolls
         // then scroll and execute the method again
-        if (await !element.isDisplayed() && amount <= maxScrolls) {
+        let displayed = await element.isDisplayed()
+        if (!displayed && amount <= maxScrolls) {
             this.swipeUp(0.85);
-            this.checkIfDisplayedWithSwipeUp(element, maxScrolls, amount + 1);
+            await this.checkIfDisplayedWithSwipeUp(element, maxScrolls, amount + 1);
         } else if (amount > maxScrolls) {
             // If the element is still not visible after the max amount of scroll let it fail
             throw new Error(`The element '${element}' could not be found or is not visible.`);
         }
-
         // The element was found, proceed with the next action
     }
 
     /**
-   * Swipe down based on a percentage
-   */
+     * Swipe down based on a percentage
+     */
     swipeDown(percentage = 1) {
         this.swipeOnPercentage(
             this.calculateXY(SWIPE_DIRECTION.down.start, percentage),
@@ -65,7 +64,8 @@ class Gestures {
     /**
      * Swipe Up based on a percentage
      */
-    swipeUp(percentage = 1) {
+    swipeUp(percentage) {
+        console.log(percentage)
         this.swipeOnPercentage(
             this.calculateXY(SWIPE_DIRECTION.up.start, percentage),
             this.calculateXY(SWIPE_DIRECTION.up.end, percentage),
@@ -92,7 +92,6 @@ class Gestures {
         );
     }
 
-
     /**
      * Swipe from coordinates (from) to the new coordinates (to). The given coordinates are
      * percentages of the screen.
@@ -101,6 +100,7 @@ class Gestures {
         // Get the screen size and store it so it can be re-used.
         // This will save a lot of webdriver calls if this methods is used multiple times.
         SCREEN_SIZE = SCREEN_SIZE || await driver.getWindowRect();
+
         // Get the start position on the screen for the swipe
         const pressOptions = this.getDeviceScreenCoordinates(SCREEN_SIZE, from);
         // Get the move to position on the screen for the swipe
@@ -113,16 +113,16 @@ class Gestures {
     }
 
     /**
-    * Swipe from coordinates (from) to the new coordinates (to). The given coordinates are in pixels.
-    */
-    async swipe(startPoint, endPoint, anchor) {
-        await driver.touchPerform([
+     * Swipe from coordinates (from) to the new coordinates (to). The given coordinates are in pixels.
+     */
+    swipe(from, to) {
+        driver.touchPerform([
             // Press the 'finger' on the first location
             {
                 action: 'press',
                 options: {
-                    x: startPoint,
-                    y: anchor,
+                    x: from.x,
+                    y: from.y
                 },
             },
             // This will be the swipe time
@@ -134,8 +134,8 @@ class Gestures {
             {
                 action: 'moveTo',
                 options: {
-                    x: endPoint,
-                    y: anchor,
+                    x: to.x,
+                    y: to.y
                 },
             },
             // Release it
@@ -148,8 +148,8 @@ class Gestures {
     }
 
     /**
-    * Get the screen coordinates based on a device his screen size
-    */
+     * Get the screen coordinates based on a device his screen size
+     */
     getDeviceScreenCoordinates(screenSize, coordinates) {
         return {
             x: Math.round(screenSize.width * (coordinates.x / 100)),
@@ -157,9 +157,8 @@ class Gestures {
         };
     }
 
-
     /**
-    * Calculate the x y coordinates based on a percentage
+     * Calculate the x y coordinates based on a percentage
      */
     calculateXY({ x, y }, percentage) {
         return {
@@ -167,10 +166,6 @@ class Gestures {
             y: y * percentage,
         };
     }
-
-    async waitForIsShown() {
-        await $('~Home-screen').waitForDisplayed({ timeout: 10000 })
-    }
 }
 
-export default new Gestures();
+export default new Gestures;
