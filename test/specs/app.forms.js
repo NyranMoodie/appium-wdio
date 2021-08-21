@@ -14,7 +14,7 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
     it('should be able type in the input and validate the text', async () => {
         const text = 'Hello, this is a demo app';
         await FormScreen.input.setValue(text);
-        await browser.pause(1000)
+        await browser.pause(1000);
         expect(await FormScreen.inputTextResult.getText()).toEqual(text);
 
         /**
@@ -23,7 +23,7 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
          *  (and thus is NOT starting with the keyboard hidden)
          *  the keyboard is closed here if it is still visible.
          */
-        if (driver.isKeyboardShown()) {
+        if (await browser.isKeyboardShown()) {
             /**
              * Normally we would hide the keyboard with this command `driver.hideKeyboard()`, but there is an issue for hiding the keyboard
              * on iOS when using the command. You will get an error like below
@@ -56,17 +56,17 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
 
         await FormScreen.dropDown.click();
         await Picker.selectValue(valueOne);
-        await browser.pause(1000)
+        await browser.pause(1000);
         expect(await FormScreen.getDropDownText()).toContain(valueOne);
 
         await FormScreen.dropDown.click();
         await Picker.selectValue(valueTwo);
-        await browser.pause(1000)
+        await browser.pause(1000);
         expect(await FormScreen.getDropDownText()).toContain(valueTwo);
 
         await FormScreen.dropDown.click();
         await Picker.selectValue(valueThree);
-        await browser.pause(1000)
+        await browser.pause(1000);
         expect(await FormScreen.getDropDownText()).toContain(valueThree);
     });
 
@@ -105,7 +105,7 @@ describe('WebdriverIO and Appium, when interacting with form elements,', () => {
         await NativeAlert.waitForIsShown(false);
         await FormScreen.inActiveButton.click();
         // Just wait 1 second to be sure it didn't appear
-        await driver.pause(1000);
+        await browser.pause(1000);
         // Now validate it isn't there
         await NativeAlert.waitForIsShown(false);
     });
