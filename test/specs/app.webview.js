@@ -23,7 +23,7 @@ describe('WebdriverIO and Appium, when interacting with a WebView,', () => {
 
         // To be able to use the site in the webview webdriver.io we first need to
         // change the context from native to webview
-        WebViewScreen.switchToContext(CONTEXT_REF.WEBVIEW);
+        await WebViewScreen.switchToContext(CONTEXT_REF.WEBVIEW);
         // Now the site can be accessed like you would automate a normal website
         // keep in mind the responsiveness
         // Open the search options
@@ -31,23 +31,28 @@ describe('WebdriverIO and Appium, when interacting with a WebView,', () => {
         // // Search for url
         await $('.DocSearch-Input').setValue('url');
 
-        await browser.pause(2000)
-        // // Let's take the first result
+        await browser.waitUntil(async () => await $$('.DocSearch-Hit-source')[0].getText() === 'browser',
+            {
+                timeout: 5000,
+                timeoutMsg: 'expected text to be different after 5s'
+            })
+
+        // Let's take the first result
         await $('#docsearch-item-0 a').click();
 
 
-        // // Now wait for the header to be displayed and verify that we are on the correct page
-        await $('h1').waitForDisplayed({ timeout: 3000 });
-        expect(await driver.getTitle()).toEqual('url | WebdriverIO');
+        // Now wait for the header to be displayed and verify that we are on the correct page
+        await $('div > article > header > h1').waitForDisplayed({ timeout: 3000 });
+        expect(await browser.getTitle()).toEqual('url | WebdriverIO');
 
-        // /**
-        //  * IMPORTANT!!
-        //  *  Because the app is not closed and opened between the 2 tests
-        //  *  (and thus is NOT starting in the default context which is native)
-        //  *  the context is here set to native. This is bad practice,
-        //  *  because you should never rely on the state of a different test,
-        //  *  but here it is excepted ;-)
-        //  */
+        /**
+         * IMPORTANT!!
+         *  Because the app is not closed and opened between the 2 tests
+         *  (and thus is NOT starting in the default context which is native)
+         *  the context is here set to native. This is bad practice,
+         *  because you should never rely on the state of a different test,
+         *  but here it is excepted ;-)
+         */
         await WebViewScreen.switchToContext(CONTEXT_REF.NATIVE);
     });
 
@@ -96,12 +101,16 @@ describe('WebdriverIO and Appium, when interacting with a WebView,', () => {
         // Search for the OCR service
         await $('.DocSearch-Input').setValue('ocr service for appium native apps');
         // There might be a history, so make sure the first result is in the `Services` category
-        await browser.pause(10000)
+        await browser.waitUntil(async () => await $$('.DocSearch-Hit-source')[0].getText() === 'Services',
+            {
+                timeout: 5000,
+                timeoutMsg: 'expected text to be different after 5s'
+            })
         // Let's take the first result
         await $('#docsearch-item-0 a').click();
 
         // Now wait for the header to be displayed and verify that we are on the correct page
-        await $('h1').waitForDisplayed({ timeout: 3000 });
-        expect(driver.getTitle()).toEqual('OCR service for Appium Native Apps Service | WebdriverIO');
+        await $('div > article > header > h1').waitForDisplayed({ timeout: 3000 });
+        expect(await browser.getTitle()).toEqual('OCR service for Appium Native Apps Service | WebdriverIO');
     });
 });

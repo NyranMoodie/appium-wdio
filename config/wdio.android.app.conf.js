@@ -18,8 +18,8 @@ exports.config = {
     capabilities: [{
         platformName: 'Android',
         maxInstances: 1,
-        'appium:deviceName': 'emulator-5554',
-        'appium:platformVersion': '11',
+        'appium:deviceName': 'Pixel Emulator',
+        'appium:platformVersion': '12',
         'appium:orientation': 'PORTRAIT',
         'appium:app': join(process.cwd(), './apps/Android-NativeDemoApp-0.4.0.apk'),
         'appium:automationName': 'UiAutomator2',

@@ -23,8 +23,8 @@ exports.config = {
         // For W3C the appium capabilities need to have an extension prefix
         // http://appium.io/docs/en/writing-running-appium/caps/
         // This is `appium:` for all Appium Capabilities which can be found here
-        'appium:deviceName': 'emulator-5554',
-        'appium:platformVersion': '11',
+        'appium:deviceName': 'Pixel 5',
+        'appium:platformVersion': '12',
         'appium:orientation': 'PORTRAIT',
         'appium:newCommandTimeout': 240,
     }],

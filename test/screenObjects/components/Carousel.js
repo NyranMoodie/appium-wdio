@@ -39,9 +39,13 @@ class Carousel {
         await this.waitForIsDisplayed();
 
         const cards = await $$(SELECTORS.CARD);
-        await driver.waitUntil(
+        await browser.waitUntil(
             () => cards.length > 0
-        );
+        ),
+        {
+            timeout: 5000,
+            timeoutMsg: 'expected text to be different after 5s'
+        };
 
         const cardNumber = (nthCard === 'first' || cards.length === 1) ? 0 : 1;
         /**
@@ -51,12 +55,12 @@ class Carousel {
          */
         let cardText;
 
-        if (driver.isAndroid) {
+        if (await browser.isAndroid) {
             cardText = await cards[cardNumber]
                 // Get all child text views, this will return an array
                 .$$('*//android.widget.TextView')
                 // walk over every child element, get the text and add it to the string
-                .reduce((currentValue, el) => `${currentValue} ${el.getText()}`, '');
+                .reduce(async (currentValue, el) => `${currentValue} ${await el.getText()}`, '');
         } else {
             cardText = await cards[cardNumber].getText()
             cardText.trim()

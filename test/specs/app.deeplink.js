@@ -13,32 +13,33 @@ describe('WebdriverIO and Appium, when navigating by deep link', () => {
     });
 
     it('should be able to open the webview', async () => {
-        openDeepLinkUrl('webview');
+        await openDeepLinkUrl('webview');
         await WebViewScreen.waitForWebsiteLoaded();
+        
     });
 
-    it('should be able to open the login form screen', async () => {
-        openDeepLinkUrl('login');
-        await LoginScreen.waitForIsShown(true);
-    });
+    // it('should be able to open the login form screen', async () => {
+    //     openDeepLinkUrl('login');
+    //     await LoginScreen.waitForIsShown(true);
+    // });
 
-    it('should be able to open the forms screen', async () => {
-        openDeepLinkUrl('forms');
-        FormsScreen.waitForIsShown(true);
-    });
+    // it('should be able to open the forms screen', async () => {
+    //     openDeepLinkUrl('forms');
+    //     await FormsScreen.waitForIsShown(true);
+    // });
 
-    it('should be able to open the swipe screen', async () => {
-        openDeepLinkUrl('swipe');
-        SwipeScreen.waitForIsShown(true);
-    });
+    // it('should be able to open the swipe screen', async () => {
+    //     openDeepLinkUrl('swipe');
+    //     await SwipeScreen.waitForIsShown(true);
+    // });
 
-    it('should be able to open the drag and drop screen', async () => {
-        openDeepLinkUrl('drag');
-        DragScreen.waitForIsShown(true);
-    });
+    // it('should be able to open the drag and drop screen', async () => {
+    //     openDeepLinkUrl('drag');
+    //     await DragScreen.waitForIsShown(true);
+    // });
 
-    it('should be able to open the home screen', async () => {
-        openDeepLinkUrl('home');
-        HomeScreen.waitForIsShown(true);
-    });
+    // it('should be able to open the home screen', async () => {
+    //     openDeepLinkUrl('home');
+    //     await HomeScreen.waitForIsShown(true);
+    // });
 });
