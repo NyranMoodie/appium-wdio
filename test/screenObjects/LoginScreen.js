@@ -19,7 +19,7 @@ class LoginScreen extends AppSettings {
         await this.email.setValue(username);
         await this.password.setValue(password);
 
-        if (driver.isKeyboardShown()) {
+        if (await browser.isKeyboardShown()) {
             /**
              * Normally we would hide the keyboard with this command `driver.hideKeyboard()`, but there is an issue for hiding the keyboard
              * on iOS when using the command. You will get an error like below
@@ -35,7 +35,7 @@ class LoginScreen extends AppSettings {
         }
         // On smaller screens there could be a possibility that the login button is not shown
         // Gestures.checkIfDisplayedWithSwipeUp(this.loginButton, 2);
-        this.loginButton.click();
+        await this.loginButton.click();
     }
 
     async submitSignUpForm(username, password) {
@@ -43,7 +43,7 @@ class LoginScreen extends AppSettings {
         await this.password.setValue(password);
         await this.repeatPassword.setValue(password);
 
-        if (driver.isKeyboardShown()) {
+        if (await browser.isKeyboardShown()) {
             /**
              * Normally we would hide the keyboard with this command `driver.hideKeyboard()`, but there is an issue for hiding the keyboard
              * on iOS when using the command. You will get an error like below

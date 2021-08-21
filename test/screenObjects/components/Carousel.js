@@ -121,7 +121,7 @@ class Carousel {
         // We dont want ask for the rectangles of the carousel if we already know them.
         // This will save unneeded webdriver calls.
 
-        CAROUSEL_RECTANGLES = CAROUSEL_RECTANGLES || driver.getElementRect(await $(SELECTORS.CAROUSEL).elementId);
+        CAROUSEL_RECTANGLES = CAROUSEL_RECTANGLES || await browser.getElementRect(await $(SELECTORS.CAROUSEL).elementId);
 
         return CAROUSEL_RECTANGLES;
     }

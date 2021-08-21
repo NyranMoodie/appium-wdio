@@ -16,7 +16,7 @@ class NativeAlert {
         * The selector for Android differs from iOS
         */
     async waitForIsShown(isShown = true) {
-        const selector = driver.isAndroid
+        const selector = await browser.isAndroid
             ? SELECTORS.ANDROID.ALERT_TITLE
             : SELECTORS.IOS.ALERT;
         await $(selector).waitForExist({
@@ -36,7 +36,7 @@ class NativeAlert {
      *  and click on the button
      */
     async pressButton(selector) {
-        const buttonSelector = driver.isAndroid
+        const buttonSelector = await browser.isAndroid
             ? SELECTORS.ANDROID.ALERT_BUTTON.replace(/{BUTTON_TEXT}/, selector.toUpperCase())
             : `~${selector}`;
         await $(buttonSelector).click();
@@ -51,12 +51,12 @@ class NativeAlert {
      *  The UI hierarchy for Android is different so it will not give the same result as with
      *  iOS if `getText` is being used. Here we construct a method that would give the same output.
      */
-    text() {
-        if (driver.isIOS) {
-            return driver.getAlertText();
+    async text() {
+        if (await browser.isIOS) {
+            return await driver.getAlertText();
         }
 
-        return `${$(SELECTORS.ANDROID.ALERT_TITLE).getText()}\n${$(SELECTORS.ANDROID.ALERT_MESSAGE).getText()}`;
+        return `${await $(SELECTORS.ANDROID.ALERT_TITLE).getText()}\n${await $(SELECTORS.ANDROID.ALERT_MESSAGE).getText()}`;
     }
 }
 export default new NativeAlert();
