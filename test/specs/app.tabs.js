@@ -4,6 +4,7 @@ import FormsScreen from '../screenObjects/FormsScreen';
 import HomeScreen from '../screenObjects/HomeScreen';
 import LoginScreen from '../screenObjects/LoginScreen';
 import SwipeScreen from '../screenObjects/SwipeScreen';
+import WebViewScreen from '../screenObjects/WebViewScreen';
 
 describe('WebdriverIO and Appium, when using navigation through the tab bar', () => {
 
@@ -13,7 +14,7 @@ describe('WebdriverIO and Appium, when using navigation through the tab bar', ()
 
     it('should be able to open the webview', async () => {
         await TabBar.openWebView();
-        await browser.pause(1000)
+        WebViewScreen.waitForWebsiteLoaded();
     });
 
     it('should be able to open the login form screen', async () => {

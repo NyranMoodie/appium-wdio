@@ -23,7 +23,7 @@ export default class WebView {
      * the webview
      */
     async waitForWebViewContextLoaded() {
-        await driver.waitUntil(
+        await browser.waitUntil(
             async () => {
                 const currentContexts = await this.getCurrentContexts();
 
@@ -41,7 +41,7 @@ export default class WebView {
         // The first context will always be the NATIVE_APP,
         // the second one will always be the WebdriverIO web page
         let currentContext = await this.getCurrentContexts()
-        await driver.switchContext(currentContext[context === CONTEXT_REF.NATIVE ? 0 : 1]);
+        await browser.switchContext(currentContext[context === CONTEXT_REF.NATIVE ? 0 : 1]);
         console.log('Switch To Context ✅')
     }
 
@@ -49,19 +49,19 @@ export default class WebView {
      * Returns an object with the list of all available contexts
      */
     async getCurrentContexts() {
-        return await driver.getContexts();
+        return await browser.getContexts();
     }
 
     /**
      * Wait for the document to be fully loaded
      */
     async waitForDocumentFullyLoaded() {
-        await driver.waitUntil(
+        await browser.waitUntil(
             // A webpage can have multiple states, the ready state is the one we need to have.
             // This looks like the same implementation as for the w3c implementation for `browser.url('https://webdriver.io')`
             // That command also waits for the readiness of the page, see also the w3c specs
             // https://www.w3.org/TR/webdriver/#dfn-waiting-for-the-navigation-to-complete
-            async () => await driver.execute(() => document.readyState) === DOCUMENT_READY_STATE.COMPLETE
+            async () => await browser.execute(() => document.readyState) === DOCUMENT_READY_STATE.COMPLETE
         );
         console.log('Document Fully Loaded ✅')
     }
@@ -70,13 +70,9 @@ export default class WebView {
      * Wait for the website in the webview to be loaded
      */
     async waitForWebsiteLoaded() {
-        console.log('step 1')
         await this.waitForWebViewContextLoaded();
-        console.log('step 2')
         await this.switchToContext(CONTEXT_REF.WEBVIEW);
-        console.log('step 3')
         await this.waitForDocumentFullyLoaded();
-        console.log('step 4')
-        this.switchToContext(CONTEXT_REF.NATIVE);
+        await this.switchToContext(CONTEXT_REF.NATIVE);
     }
 }

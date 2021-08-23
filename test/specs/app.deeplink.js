@@ -15,7 +15,6 @@ describe('WebdriverIO and Appium, when navigating by deep link', () => {
     it('should be able to open the webview', async () => {
         await openDeepLinkUrl('webview');
         await WebViewScreen.waitForWebsiteLoaded();
-        
     });
 
     // it('should be able to open the login form screen', async () => {
