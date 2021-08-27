@@ -27,16 +27,12 @@ describe('WebdriverIO and Appium, when interacting with a login form,', () => {
 
     it('should be able sign up successfully', async () => {
         // Always make sure you are on the right tab
-        await LoginScreen.signUpContainerButton.click();
+
         // Submit the data
-        await LoginScreen.submitSignUpForm('test@webdriver.io', 'Test1234!');
 
         // Wait for the alert and validate it
-        await NativeAlert.waitForIsShown();
-        expect(await NativeAlert.text()).toEqual('Signed Up!\nYou successfully signed up!');
+
         // Close the alert
-        await NativeAlert.pressButton('OK');
-        await NativeAlert.waitForIsShown(false);
     });
 
 });

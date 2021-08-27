@@ -21,35 +21,11 @@ describe('WebdriverIO and Appium, when using swiping', () => {
         await Carousel.swipeLeft()
         expect(await Carousel.getNthCardText('active')).toContain('GREAT COMMUNITY');
 
-
-        await Carousel.swipeLeft();
-        expect(await Carousel.getNthCardText('active')).toContain('JS.FOUNDATION');
-
-        await Carousel.swipeLeft()
-        expect(await Carousel.getNthCardText('active')).toContain('SUPPORT VIDEOS');
-
-        await Carousel.swipeLeft()
-        expect(await Carousel.getNthCardText('active')).toContain('EXTENDABLE');
-
-        await Carousel.swipeLeft()
-        expect(await Carousel.getNthCardText('active')).toContain('COMPATIBLE');
-
-        /**
-         * To understand what happens in `swipeRight()` please check the method
-         */
-        await Carousel.swipeRight();
-        expect(await Carousel.getNthCardText('active')).toContain('EXTENDABLE');
-
-        await Carousel.swipeRight();
-        await Carousel.swipeRight();
-        await Carousel.swipeRight();
-        await Carousel.swipeRight();
-        expect(await Carousel.getNthCardText('first')).toContain('FULLY OPEN SOURCE');
     });
 
     it('should be able to swipe vertical by finding the surprise', async () => {
-        // Swipe up and try to find the element. You can only swipe a max of 5 times
-        await Gestures.checkIfDisplayedWithSwipeUp(await SwipeScreen.logo, 5);
+        // Swipe up and try to find the element. You can only swipe a max of 1 times
+        await Gestures.checkIfDisplayedWithSwipeUp(await SwipeScreen.logo, 1);
         expect(await SwipeScreen.logo).toBeDisplayed();
     });
 });

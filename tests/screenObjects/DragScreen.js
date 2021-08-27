@@ -34,7 +34,6 @@ class DragScreen extends AppSettings {
 
     async getCongratulationsText()    {
         if(await browser.isAndroid){
-          
           return await this.congratulationsTextAndroid.getText()
         } else {
           return await this.congratulationsTextIOS.getText()
