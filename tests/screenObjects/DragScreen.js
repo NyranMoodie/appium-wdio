@@ -5,6 +5,7 @@ class DragScreen extends AppSettings {
     constructor() {
         super('~Drag-drop-screen');
     }
+
     get dragL1() { return $('~drag-l1'); }
     get dragC1() { return $('~drag-c1'); }
     get dragR1() { return $('~drag-r1'); }
@@ -14,6 +15,7 @@ class DragScreen extends AppSettings {
     get dragL3() { return $('~drag-l3'); }
     get dragC3() { return $('~drag-c3'); }
     get dragR3() { return $('~drag-r3'); }
+
     get dropL1() { return $('~drop-l1'); }
     get dropC1() { return $('~drop-c1'); }
     get dropR1() { return $('~drop-r1'); }
@@ -23,14 +25,26 @@ class DragScreen extends AppSettings {
     get dropL3() { return $('~drop-l3'); }
     get dropC3() { return $('~drop-c3'); }
     get dropR3() { return $('~drop-r3'); }
+
     get renew() { return $('~renew'); }
     get retry() { return $('~button-Retry'); }
+    get congratulationsTextAndroid() { return $('//android.view.ViewGroup[@content-desc="Drag-drop-screen"]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.widget.TextView'); }
+    get congratulationsTextIOS() { return $('-ios predicate string: label == "Congratulations" AND name == "Congratulations" AND type == "XCUIElementTypeOther"'); }
 
+
+    async getCongratulationsText()    {
+        if(await browser.isAndroid){
+          
+          return await this.congratulationsTextAndroid.getText()
+        } else {
+          return await this.congratulationsTextIOS.getText()
+        }
+      }
     /**
     * Drag an element to a position.
     */
     async dragElementTo(elementOne, elementTwo) {
-        await driver.touchPerform([
+        await browser.touchPerform([
             // Press the 'finger' on the first element. We provide the elementId here so
             // Appium can automatically determine the location of the element instead
             // of doing it ourselves
@@ -41,7 +55,7 @@ class DragScreen extends AppSettings {
             // This will be the drag time
             {
                 action: 'wait',
-                options: { ms: 1000 },
+                options: { ms: 500 },
             },
             // Move the finger to the second element where we want to release it
             // Appium can automatically determine the location of the element instead
@@ -56,12 +70,12 @@ class DragScreen extends AppSettings {
             },
         ]);
 
-        // // There is also a second option to make this work with the W3C actions command.
-        // // This command is more verbose and a little but more complex.
-        // // See https://github.com/jlipps/simple-wd-spec#perform-actions
-        // // for a clear explanation of all properties
-        // // Comment the above code and uncomment the below code to use the official W3C actions
-        // driver.performActions([
+        // There is also a second option to make this work with the W3C actions command.
+        // This command is more verbose and a little but more complex.
+        // See https://github.com/jlipps/simple-wd-spec#perform-actions
+        // for a clear explanation of all properties
+        // Comment the above code and uncomment the below code to use the official W3C actions
+        // await browser.performActions([
         //     {
         //         // 1. Create the event
         //         type: 'pointer',
@@ -87,7 +101,7 @@ class DragScreen extends AppSettings {
         // ]);
 
         // Add a pause, just to make sure the drag and drop is done
-        await driver.pause(1000);
+        await browser.pause(1000);
     }
 }
 

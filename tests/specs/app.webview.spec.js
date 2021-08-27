@@ -108,7 +108,7 @@ describe('WebdriverIO and Appium, when interacting with a WebView,', () => {
             })
         // Let's take the first result
         await $('#docsearch-item-0 a').click();
-
+        await browser.pause(2000)
         // Now wait for the header to be displayed and verify that we are on the correct page
         await $('div > article > header > h1').waitForDisplayed({ timeout: 3000 });
         expect(await browser.getTitle()).toEqual('OCR service for Appium Native Apps Service | WebdriverIO');

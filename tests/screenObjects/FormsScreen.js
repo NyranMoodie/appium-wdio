@@ -19,7 +19,7 @@ class FormsScreen extends AppSettings {
  * For Android the switch is `ON|OFF`, for iOS '1|0'
  */
     async isSwitchActive() {
-        const active = driver.isAndroid ? 'ON' : '1';
+        const active = await browser.isAndroid ? 'ON' : '1';
         let text = await this.switch.getText()
         let status = text.includes(active);
         return status
@@ -37,7 +37,7 @@ class FormsScreen extends AppSettings {
         // Which is `//*[@content-desc="Dropdown"]/*/android.widget.EditText` so it's let element dependent
         let selector;
 
-        if (driver.isAndroid) {
+        if (await browser.isAndroid) {
             selector = '//*[@content-desc="Dropdown"]/*/android.widget.EditText';
         } else {
             // **/*[`name == "Dropdown"`]/**/*[`name == "text_input"`]

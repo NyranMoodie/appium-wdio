@@ -6,7 +6,7 @@ exports.config = {
     port: 4723,
     path: '/wd/hub',
     specs: [
-        './test/specs/**/*.js'
+        './tests/specs/**/browser*.spec.js',
     ],
     // Patterns to exclude.
     exclude: [

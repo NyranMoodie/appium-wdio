@@ -6,7 +6,7 @@ exports.config = {
     port: 4723,
     path: '/wd/hub',
     specs: [
-        './test/specs/**/*.js'
+        './tests/specs/**/browser*.spec.js',
     ],
     // Patterns to exclude.
     exclude: [
@@ -22,7 +22,7 @@ exports.config = {
         browserName: 'safari',
         platformName: 'iOS',
         maxInstances: 1,
-        'appium:deviceName': 'iPhone 12 Pro',
+        'appium:deviceName': 'iPhone 12 Pro Max',
         'appium:platformVersion': '14.5',
         'appium:orientation': 'PORTRAIT',
         'appium:automationName': 'XCUITest',

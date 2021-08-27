@@ -6,7 +6,7 @@ exports.config = {
     port: 4723,
     path: '/wd/hub',
     specs: [
-        './test/specs/**/*.js'
+        './tests/specs/**/app*.spec.js',
     ],
     // Patterns to exclude.
     exclude: [
@@ -18,8 +18,8 @@ exports.config = {
     capabilities: [{
         platformName: 'iOS',
         maxInstances: 1,
-        'appium:deviceName': 'iPhone 12 Pro',
-        'appium:platformVersion': '14.5',
+        'appium:deviceName': 'iPhone 12 Pro Max' ,
+        'appium:1': '14.5',
         'appium:orientation': 'PORTRAIT',
         'appium:automationName': 'XCUITest',
         // The path to the app
