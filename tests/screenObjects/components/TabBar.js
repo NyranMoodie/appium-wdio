@@ -1,4 +1,5 @@
 class TabBar {
+    
     get home() { return $('~Home') }
     get webView() { return $('~Webview') }
     get login() { return $('~Login') }
