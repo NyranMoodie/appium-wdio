@@ -22,15 +22,15 @@ describe('WebdriverIO and Appium, when using drag and drop', () => {
         await DragScreen.dragElementTo(await DragScreen.dragC3, await DragScreen.dropC3);
         await DragScreen.dragElementTo(await DragScreen.dragR3, await DragScreen.dropR3);
 
-      expect(await DragScreen.getCongratulationsText()).toHaveText('Congratulations')
-        // // Wait for the retry button to be visible, meaning the success screen is there
-        // // There is no expectation here because the waitForDisplayed will fail if the element is not visible
-        // await DragScreen.retry.waitForDisplayed();
+        expect(await DragScreen.getCongratulationsText()).toHaveText('Congratulations')
+        // Wait for the retry button to be visible, meaning the success screen is there
+        // There is no expectation here because the waitForDisplayed will fail if the element is not visible
+        await DragScreen.retry.waitForDisplayed();
 
-        // // Retry
-        // await DragScreen.retry.click();
-        // // Wait for the renew button to be visible, meaning the puzzle is shown again
-        // // There is no expectation here because the waitForDisplayed will fail if the element is not visible
-        // await DragScreen.renew.waitForDisplayed();
+        // Retry
+        await DragScreen.retry.click();
+        // Wait for the renew button to be visible, meaning the puzzle is shown again
+        // There is no expectation here because the waitForDisplayed will fail if the element is not visible
+        await DragScreen.renew.waitForDisplayed();
     });
 });
